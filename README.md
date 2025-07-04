@@ -1,6 +1,6 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+Working on a simple to do app. Will add more about it later.
 
 ## Functionality
 
@@ -14,4 +14,4 @@ Give a description of the technologies and techniques used. Pictures, GIFs, or s
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+- [TODO LINK](https://fauxfox117.github.io/se_project_todo-app/)
