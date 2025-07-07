@@ -6,7 +6,7 @@ class Todo {
 
   _setEventListeners() {
     this._todoDeleteBtn.addEventListener("click", () => {
-      this._todoElement.remove(this._todoElement);
+      this._todoElement.remove();
     });
 
     this._todoCheckboxEl.addEventListener("change", () => {

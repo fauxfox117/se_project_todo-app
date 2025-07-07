@@ -8,31 +8,28 @@ class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._formElement = formElement;
   }
-  _showInputError = (_formElement, _inputElement, _errorMessage) => {
-    this._errorElementId = `#${_inputElement.id}-error`;
-    this._errorElement = _formElement.querySelector(this._errorElementId);
-    _inputElement.classList.add(this._inputErrorClass);
-    this._errorElement.textContent = _errorMessage;
-    this._errorElement.classList.add(this._errorClass);
+
+  _showInputError = (inputElement, errorMessage) => {
+    const errorElementId = `#${inputElement.id}-error`;
+    const errorElement = this._formElement.querySelector(errorElementId); // use the class field to query the error element
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._errorClass);
   };
 
-  _hideInputError = (_formElement, _inputElement) => {
+  _hideInputError = (_inputElement) => {
     this._errorElementId = `#${_inputElement.id}-error`;
-    this._errorElement = _formElement.querySelector(this._errorElementId);
+    this._errorElement = this._formElement.querySelector(this._errorElementId);
     _inputElement.classList.remove(this._inputErrorClass);
     this._errorElement.classList.remove(this._errorClass);
     this._errorElement.textContent = "";
   };
 
-  _checkInputValidity(_inputElement) {
-    if (!_inputElement.validity.valid) {
-      this._showInputError(
-        this._formElement,
-        _inputElement,
-        _inputElement.validationMessage
-      );
+  _checkInputValidity(inputElement) {
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      this._hideInputError(this._formElement, _inputElement);
+      this._hideInputError(inputElement);
     }
   }
 
@@ -80,7 +77,7 @@ class FormValidator {
   resetValidation = () => {
     this._formElement.reset();
     this._inputList.forEach((_inputElement) => {
-      this._hideInputError(this._formElement, this._inputElement);
+      this._hideInputError(_inputElement);
       this._toggleButtonState();
     });
   };
