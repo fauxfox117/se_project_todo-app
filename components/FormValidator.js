@@ -49,7 +49,7 @@ class FormValidator {
     }
   };
 
-  _setEventListeners(_formElement) {
+  _setEventListeners() {
     this._inputList = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
@@ -78,8 +78,8 @@ class FormValidator {
     this._formElement.reset();
     this._inputList.forEach((_inputElement) => {
       this._hideInputError(_inputElement);
-      this._toggleButtonState();
     });
+    this._toggleButtonState();
   };
 }
 
