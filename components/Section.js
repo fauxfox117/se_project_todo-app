@@ -4,13 +4,16 @@ class Section {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
-  renderItems(item) {
+  renderItems() {
     this._items.forEach((item) => {
       this._renderer(item);
+      console.log(items);
     });
   }
 
-  addItem() {}
+  addItem(item) {
+    this._container.append(item);
+  }
 }
 
 export default Section;
