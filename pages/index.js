@@ -14,8 +14,18 @@ const todosList = document.querySelector(".todos__list");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: () => {},
+  handleFormSubmit: (inputValues) => {
+    // Create a date object and adjust for timezone
+    // const date = new Date(dateInput);
+    // date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+    const id = uuidv4();
+    // const values = { name, date, id };
+    renderTodo(inputValues);
+    newTodoValidator.resetValidation();
+    this.close();
+  },
 });
+
 addTodoPopup.setEventListeners();
 
 const section = new Section({
@@ -42,21 +52,7 @@ const renderTodo = (item) => {
   todosList.append(todo);
 };
 
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
-
-  // Create a date object and adjust for timezone
-  const date = new Date(dateInput);
-  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-
-  const id = uuidv4();
-  const values = { name, date, id };
-  renderTodo(values);
-  newTodoValidator.resetValidation();
-  addTodoPopup.close;
-});
+// });
 
 // initialTodos.forEach((item) => {
 //   renderTodo(item);

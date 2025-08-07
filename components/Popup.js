@@ -5,7 +5,6 @@ class Popup {
   }
 
   _handleEscapeClose(evt) {
-    // console.log("Escape key pressed, event:", evt);
     if (evt.key === "Escape") this.close();
   }
 
@@ -22,10 +21,6 @@ class Popup {
   }
 
   setEventListeners() {
-    // this._popupCloseBtn.addEventListener("click", () => {
-    //   this.close();
-    // });
-
     this._popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target.classList.contains("popup__close") ||
