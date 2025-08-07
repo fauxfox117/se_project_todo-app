@@ -29,10 +29,9 @@ class Popup {
     this._popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target.classList.contains("popup__close") ||
-        evt.target.classList.contains("popup")
-      );
-
-      this.close();
+        evt.target.classList.contains("popup_visible")
+      )
+        this.close();
     });
   }
 }
