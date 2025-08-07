@@ -1,7 +1,8 @@
 class Todo {
-  constructor(data, selector) {
+  constructor(data, selector, counter) {
     this._data = data;
     this._templateElement = document.querySelector(selector);
+    this._counter = counter;
   }
 
   _setEventListeners() {
@@ -11,6 +12,9 @@ class Todo {
 
     this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = !this._data.completed;
+      if (this._counter) {
+        this._counter.updateCompleted(this._data.completed);
+      }
     });
   }
 
