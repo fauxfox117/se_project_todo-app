@@ -34,7 +34,7 @@ class Todo {
 
     this._dueDate = new Date(this._data.date);
     if (!isNaN(this._dueDate)) {
-      this._todoDateEl.textContent = `Due: ${this._dueDate.toLocaleString(
+      this._todoDateEl.textContent = `Due: ${this._dueDate.toLocaleDateString(
         "en-US",
         {
           year: "numeric",
