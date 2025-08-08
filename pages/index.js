@@ -5,7 +5,7 @@ import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import TodoCounter from "../componenets/TodoCounter.js";
+import TodoCounter from "../components/TodoCounter.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
@@ -18,14 +18,18 @@ const counter = new TodoCounter(initialTodos, ".counter__text");
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (inputValues) => {
+    const id = uuidv4();
     // Create a date object and adjust for timezone
     const date = new Date(inputValues.date);
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-    const id = uuidv4();
 
+    inputValues.id = id;
+    inputValues.completed = false;
+
+    section.addItem(generateTodo(inputValues));
     counter.updateTotal(true);
+
     addTodoPopup.close();
-    renderTodo(inputValues);
     newTodoValidator.resetValidation();
   },
 });
@@ -34,7 +38,7 @@ addTodoPopup.setEventListeners();
 
 const renderTodo = (item) => {
   const todo = generateTodo(item);
-  todosList.append(todo);
+  section.addItem(todo);
 };
 
 const generateTodo = (data) => {
@@ -47,7 +51,6 @@ const section = new Section({
   items: initialTodos,
   renderer: (item) => {
     renderTodo(item);
-    todosList;
   },
   containerSelector: ".todos__list",
 });

@@ -72,7 +72,7 @@ class FormValidator {
       evt.preventDefault();
     });
 
-    this._setEventListeners(this._formElement);
+    this._setEventListeners();
   }
   resetValidation = () => {
     this._formElement.reset();
