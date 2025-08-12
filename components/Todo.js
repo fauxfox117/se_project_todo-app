@@ -10,12 +10,10 @@ class Todo {
     this._todoDeleteBtn.addEventListener("click", () => {
       this._todoElement.remove();
       this._counter.updateTotal(false);
-      this._handleCheck(this._data.completed);
+      if (this._data.completed) {
+        this._counter.updateCompleted(false);
+      }
     });
-
-    if (this._data.completed) {
-      this._counter.updateCompleted(false);
-    }
 
     this._todoCheckboxEl.addEventListener("change", (evt) => {
       const wasCompleted = this._data.completed;
