@@ -41,9 +41,6 @@ const renderTodo = (item) => {
   section.addItem(todo);
 };
 
-function handleCheck(completed) {
-  counter.updateCompleted(completed);
-}
 
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template", counter);
